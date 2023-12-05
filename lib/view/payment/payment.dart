@@ -59,8 +59,7 @@ class PaymentView extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Text(
-                  "رسوم الخدمة 1000 جنيه، هل ترغب في الدفع الان"
-                  " أو عند مسجل الطبيب بعد الوصول الى العيادة ؟",
+                  "اختر مزود الخدمة الخاص بك",
                   textAlign: TextAlign.right,
                   style: TextStyle(fontSize: h * 0.02),
                 ),
