@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "823203085095",
+    "project_id": "angiz-b1807",
+    "storage_bucket": "angiz-b1807.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823203085095:android:f4dd4d895ddec2e7620702",
+        "android_client_info": {
+          "package_name": "com.khalid.angiz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqybif4vYYET2qNywZHU2vrcQh1b86Fts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
