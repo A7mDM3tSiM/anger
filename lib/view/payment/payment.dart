@@ -59,7 +59,8 @@ class PaymentView extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Text(
-                  "اختر مزود الخدمة الخاص بك",
+                  "سيتم خصم 1000 جنية من رصيدك. "
+                  "الرجاء اختيار الشريحة التي تعمل بها",
                   textAlign: TextAlign.right,
                   style: TextStyle(fontSize: h * 0.02),
                 ),

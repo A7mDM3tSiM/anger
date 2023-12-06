@@ -94,6 +94,19 @@ class HomeView extends StatelessWidget {
                 ),
               ],
             ),
+            SizedBox(height: h * 0.03),
+            GestureDetector(
+              onTap: () {
+                NavigationService.push(Routes.addressBookRoute);
+              },
+              child: Text(
+                "عرض مواقع الاطباء",
+                style: TextStyle(
+                  fontSize: h * 0.02,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+            ),
             SizedBox(height: h * 0.1),
             Padding(
               padding: const EdgeInsets.all(8.0),

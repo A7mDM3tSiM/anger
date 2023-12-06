@@ -56,6 +56,10 @@ class DoctorViewModel extends ChangeNotifier {
     _stopLoading();
   }
 
+  Doctor getCurrentDoctor() {
+    return _doctors.where((doc) => doc.name == currentDoc).first;
+  }
+
   Future<void> fetchDoctors() async {
     _startLoading();
     _doctors.clear();
@@ -75,13 +79,13 @@ class DoctorViewModel extends ChangeNotifier {
 
     switch (paymnetService) {
       case PaymnetService.mtn:
-        code = "*121*0996837979*100000*00000#";
+        code = "*121*0924621919*100000*00000#";
         break;
       case PaymnetService.sudani:
-        code = "*303*0122247364*1000*0000#";
+        code = "*303*0100013145*1000*0000#";
         break;
       case PaymnetService.zain:
-        code = "*200*${pinCtrl.text.trim()}*1000*0912145945*0912145945#";
+        code = "*200*${pinCtrl.text.trim()}*1000*0907413221*0907413221#";
         break;
       default:
         return;
