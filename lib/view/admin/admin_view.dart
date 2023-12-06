@@ -62,6 +62,7 @@ class AdminView extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: w * 0.02),
                 height: h * 0.06,
                 width: w,
+                color: Colors.white,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -79,23 +80,30 @@ class AdminView extends StatelessWidget {
               ),
             ),
             Container(height: 2, width: w, color: Colors.grey),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: w * 0.02),
-              height: h * 0.06,
-              width: w,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Icon(
-                    Icons.arrow_back_ios,
-                    color: Colors.grey,
-                    size: h * 0.017,
-                  ),
-                  Text(
-                    "عرض الحجوزات",
-                    style: TextStyle(fontSize: h * 0.02),
-                  ),
-                ],
+            GestureDetector(
+              onTap: () {
+                context.read<AdminViewModel>().fectchBookings();
+                NavigationService.push(Routes.adminBookingsRoute);
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: w * 0.02),
+                height: h * 0.06,
+                width: w,
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.grey,
+                      size: h * 0.017,
+                    ),
+                    Text(
+                      "عرض الحجوزات",
+                      style: TextStyle(fontSize: h * 0.02),
+                    ),
+                  ],
+                ),
               ),
             ),
             Container(height: 2, width: w, color: Colors.grey),

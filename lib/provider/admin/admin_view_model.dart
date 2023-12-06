@@ -1,4 +1,5 @@
 import 'package:angiz/models/admin/admin_repo.dart';
+import 'package:angiz/models/admin/booking_model.dart';
 import 'package:angiz/models/doctor/doctor_model.dart';
 import 'package:angiz/provider/doctor/doctor_view_model.dart';
 import 'package:flutter/material.dart';
@@ -10,10 +11,13 @@ class AdminViewModel extends ChangeNotifier {
   final nameCtrl = TextEditingController();
   final locationCtrl = TextEditingController();
 
-  String? currentSpec = "باطنية";
+  final _bookings = <Booking>[];
+  List<Booking> get bookings => _bookings;
 
   var _isLoading = false;
   bool get isLoading => _isLoading;
+
+  String? currentSpec = "باطنية";
 
   void _startLoading() {
     _isLoading = true;
@@ -95,6 +99,18 @@ class AdminViewModel extends ChangeNotifier {
         backgroundColor: Colors.red,
         fontSize: 17,
       );
+    }
+
+    _stopLoading();
+  }
+
+  void fectchBookings() async {
+    _startLoading();
+    _bookings.clear();
+    final result = await _adminRepo.getbookings();
+
+    if (result != null) {
+      _bookings.addAll(result);
     }
 
     _stopLoading();

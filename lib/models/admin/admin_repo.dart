@@ -21,7 +21,7 @@ class AdminRepo {
   Future<List<Booking>?> getbookings() async {
     final list = <Booking>[];
 
-    final fb = FirebaseService(collectionPath: "doctors");
+    final fb = FirebaseService(collectionPath: "bookings");
     final bookingsData = await fb.getCollectionDocs();
 
     for (final json in bookingsData) {

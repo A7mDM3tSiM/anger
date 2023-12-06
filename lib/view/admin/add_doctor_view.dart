@@ -58,7 +58,7 @@ class AddDoctorView extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Text(
-                  ".. من فضلك قم بإدخال بيانات المريض",
+                  ".. من فضلك قم بإدخال بيانات الطبيب",
                   style: TextStyle(
                     fontSize: h * 0.025,
                     fontWeight: FontWeight.w200,

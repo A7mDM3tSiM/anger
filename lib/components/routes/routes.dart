@@ -1,4 +1,5 @@
 import 'package:angiz/view/admin/add_doctor_view.dart';
+import 'package:angiz/view/admin/admin_booking_view.dart';
 import 'package:angiz/view/admin/admin_view.dart';
 import 'package:angiz/view/book/book_view.dart';
 import 'package:angiz/view/home/contact_us_view.dart';
@@ -16,6 +17,7 @@ class Routes {
   static String contactUsRoute = '/contact_us';
   static String adminRoute = '/admin';
   static String addDoctorRoute = '/add_doctor';
+  static String adminBookingsRoute = '/admin_bookings';
 
   /// a set contain all the app routes assigned to widgets
   // (_) is context but it's not needed
@@ -27,5 +29,6 @@ class Routes {
     contactUsRoute: (_) => const ContactUsView(),
     adminRoute: (_) => const AdminView(),
     addDoctorRoute: (_) => const AddDoctorView(),
+    adminBookingsRoute: (_) => const AdminBookingView(),
   };
 }
