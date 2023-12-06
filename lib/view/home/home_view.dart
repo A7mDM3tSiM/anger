@@ -102,7 +102,20 @@ class HomeView extends StatelessWidget {
                 fit: BoxFit.cover,
                 height: h * 0.4,
               ),
-            )
+            ),
+            SizedBox(height: h * 0.1),
+            GestureDetector(
+              onTap: () {
+                NavigationService.push(Routes.adminRoute);
+              },
+              child: Text(
+                "Admin panel",
+                style: TextStyle(
+                  fontSize: h * 0.02,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+            ),
           ],
         ),
       ),

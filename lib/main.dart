@@ -1,3 +1,4 @@
+import 'package:angiz/provider/admin/admin_view_model.dart';
 import 'package:angiz/provider/doctor/doctor_view_model.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +42,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<DoctorViewModel>(
           create: (_) => DoctorViewModel(),
+        ),
+        ChangeNotifierProvider<AdminViewModel>(
+          create: (_) => AdminViewModel(),
         ),
       ],
       child: Consumer<ThemeManegerProvider>(

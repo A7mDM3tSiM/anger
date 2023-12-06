@@ -14,4 +14,13 @@ class Doctor {
       location: data?['location'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      "name": name,
+      "spec": spec,
+      "location": location,
+    };
+  }
 }

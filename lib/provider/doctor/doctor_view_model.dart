@@ -1,4 +1,6 @@
 import 'package:angiz/components/routes/routes.dart';
+import 'package:angiz/models/admin/admin_repo.dart';
+import 'package:angiz/models/admin/booking_model.dart';
 import 'package:angiz/models/doctor/doctor_model.dart';
 import 'package:angiz/models/doctor/doctor_repo.dart';
 import 'package:angiz/services/navigation_service.dart';
@@ -76,7 +78,7 @@ class DoctorViewModel extends ChangeNotifier {
         code = "*121*0996837979*100000*00000#";
         break;
       case PaymnetService.sudani:
-        code = "*303*0122247364*1000*0000";
+        code = "*303*0122247364*1000*0000#";
         break;
       case PaymnetService.zain:
         code = "*200*${pinCtrl.text.trim()}*1000*0912145945*0912145945#";
@@ -111,6 +113,15 @@ class DoctorViewModel extends ChangeNotifier {
       );
       return;
     }
+    if (paymnetService == PaymnetService.zain &&
+        !message.toLowerCase().contains("successfuly")) {
+      Fluttertoast.showToast(
+        msg: 'فشلت العملية، تأكد من رصيدك وحاول محدداََ',
+        backgroundColor: Colors.red,
+        fontSize: 17,
+      );
+      return;
+    }
 
     Fluttertoast.showToast(
       msg: 'تمت العملية ينجاح',
@@ -118,6 +129,17 @@ class DoctorViewModel extends ChangeNotifier {
       fontSize: 17,
     );
     launchWhatsapp();
+  }
+
+  Future<void> _saveBooking() async {
+    final booking = Booking(
+      name: nameCtrl.text.trim(),
+      number: phoneCtrl.text.trim(),
+      date: bookingDate,
+      doctor: "$currentDoc - $currentSpec",
+    );
+
+    await AdminRepo().addBooking(booking);
   }
 
   void launchWhatsapp() async {
@@ -132,7 +154,7 @@ class DoctorViewModel extends ChangeNotifier {
     final link = "https://wa.me/++249907413221?text=$text";
 
     launchUrlString(link, mode: LaunchMode.externalApplication);
-    await Future.delayed(const Duration(seconds: 3));
+    await _saveBooking();
     NavigationService.popUntil(Routes.homeRoute);
   }
 
@@ -258,5 +280,6 @@ class DoctorViewModel extends ChangeNotifier {
     currentDoc = null;
     bookingDate = null;
     paymentMethod = null;
+    paymnetService = null;
   }
 }
