@@ -7,6 +7,7 @@ import 'package:angiz/view/home/address_book_view.dart';
 import 'package:angiz/view/home/contact_us_view.dart';
 import 'package:angiz/view/home/home_view.dart';
 import 'package:angiz/view/payment/payment.dart';
+import 'package:angiz/view/pdf/pdf_view.dart';
 
 import '../../view/spalsh/splash_view.dart';
 
@@ -22,6 +23,7 @@ class Routes {
   static String adminBookingsRoute = '/admin_bookings';
   static String addressBookRoute = '/address_book';
   static String successRoute = '/success';
+  static String pdfRoute = '/pdf';
 
   /// a set contain all the app routes assigned to widgets
   // (_) is context but it's not needed
@@ -36,5 +38,6 @@ class Routes {
     adminBookingsRoute: (_) => const AdminBookingView(),
     addressBookRoute: (_) => const AddressBookView(),
     successRoute: (_) => const SuccessView(),
+    pdfRoute: (_) => const PdfView(),
   };
 }
