@@ -283,31 +283,38 @@ class BookView extends StatelessWidget {
                     if (doc.paymentMethod == PaymentMethod.now) {
                       NavigationService.push(Routes.paymentRoute);
                     } else {
-                      doc.launchWhatsapp();
+                      doc.completeBooking();
                     }
                   }
                 },
-                child: Container(
-                  width: w * 0.8,
-                  height: h * 0.05,
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(5),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey[200]!,
-                        blurRadius: 10,
-                        offset: const Offset(0, 3),
+                child: Consumer<DoctorViewModel>(
+                  builder: (_, doc, __) {
+                    if (doc.isLoading) {
+                      return const CircularProgressIndicator();
+                    }
+                    return Container(
+                      width: w * 0.8,
+                      height: h * 0.05,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(5),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey[200]!,
+                            blurRadius: 10,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  child: Center(
-                    child: Text(
-                      "استمرار",
-                      style:
-                          TextStyle(color: Colors.white, fontSize: h * 0.023),
-                    ),
-                  ),
+                      child: Center(
+                        child: Text(
+                          "استمرار",
+                          style: TextStyle(
+                              color: Colors.white, fontSize: h * 0.023),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ],

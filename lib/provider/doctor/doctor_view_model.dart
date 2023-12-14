@@ -72,6 +72,15 @@ class DoctorViewModel extends ChangeNotifier {
     _stopLoading();
   }
 
+  void completeBooking() async {
+    _startLoading();
+
+    await saveBooking();
+    NavigationService.push(Routes.successRoute);
+
+    _stopLoading();
+  }
+
   void runUSSD() async {
     _startLoading();
 
@@ -82,7 +91,7 @@ class DoctorViewModel extends ChangeNotifier {
         code = "*121*0924621919*100000*00000#";
         break;
       case PaymnetService.sudani:
-        code = "*303*0100013145*1000*0000#";
+        code = "*303*1000*0100013145*0000#";
         break;
       case PaymnetService.zain:
         code = "*200*${pinCtrl.text.trim()}*1000*0907413221*0907413221#";
@@ -91,11 +100,13 @@ class DoctorViewModel extends ChangeNotifier {
         return;
     }
 
-    final result =
-        await UssdAdvanced.sendAdvancedUssd(code: code, subscriptionId: -1);
+    final result = await UssdAdvanced.sendAdvancedUssd(
+      code: code,
+      subscriptionId: -1,
+    );
 
     _handleResponse(result ?? "");
-    _stopLoading();
+    completeBooking();
   }
 
   void _handleResponse(String message) {
@@ -118,7 +129,7 @@ class DoctorViewModel extends ChangeNotifier {
       return;
     }
     if (paymnetService == PaymnetService.zain &&
-        !message.toLowerCase().contains("successfuly")) {
+        !message.toLowerCase().contains("successful")) {
       Fluttertoast.showToast(
         msg: 'فشلت العملية، تأكد من رصيدك وحاول محدداََ',
         backgroundColor: Colors.red,
@@ -132,15 +143,15 @@ class DoctorViewModel extends ChangeNotifier {
       backgroundColor: Colors.green,
       fontSize: 17,
     );
-    launchWhatsapp();
   }
 
-  Future<void> _saveBooking() async {
+  Future<void> saveBooking() async {
     final booking = Booking(
       name: nameCtrl.text.trim(),
       number: phoneCtrl.text.trim(),
       date: bookingDate,
       doctor: "$currentDoc - $currentSpec",
+      paymentMethod: paymentMethod == PaymentMethod.now ? 0 : 1,
     );
 
     await AdminRepo().addBooking(booking);
@@ -155,11 +166,9 @@ class DoctorViewModel extends ChangeNotifier {
         "\n"
         "الظبيب : $currentDoc - $currentSpec";
 
-    final link = "https://wa.me/++249907413221?text=$text";
+    final link = "https://wa.me/+249907413221?text=$text";
 
     launchUrlString(link, mode: LaunchMode.externalApplication);
-    await _saveBooking();
-    NavigationService.popUntil(Routes.homeRoute);
   }
 
   void serCurrentSpec(String newSpec) {

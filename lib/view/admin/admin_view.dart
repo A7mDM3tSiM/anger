@@ -99,7 +99,7 @@ class AdminView extends StatelessWidget {
                       size: h * 0.017,
                     ),
                     Text(
-                      "عرض الحجوزات",
+                      "عرض حجوزات اليوم",
                       style: TextStyle(fontSize: h * 0.02),
                     ),
                   ],

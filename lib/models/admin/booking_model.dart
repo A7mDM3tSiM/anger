@@ -3,12 +3,14 @@ class Booking {
   final String? number;
   final String? date;
   final String? doctor;
+  final int? paymentMethod;
 
   const Booking({
     this.name,
     this.number,
     this.date,
     this.doctor,
+    this.paymentMethod,
   });
 
   factory Booking.fromJson(Map<String, dynamic>? data) {
@@ -17,6 +19,7 @@ class Booking {
       number: data?['number'],
       date: data?['date'],
       doctor: data?['doctor'],
+      paymentMethod: data?['payment_method'],
     );
   }
 
@@ -26,6 +29,7 @@ class Booking {
       'number': number,
       'date': date,
       'doctor': doctor,
+      'payment_method': paymentMethod
     };
   }
 }

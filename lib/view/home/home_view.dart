@@ -104,6 +104,7 @@ class HomeView extends StatelessWidget {
                 style: TextStyle(
                   fontSize: h * 0.02,
                   decoration: TextDecoration.underline,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
